@@ -223,6 +223,11 @@
                                             <p>Table Pegawai</p>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('tabel_user')}}" class="nav-link {{ request()->is('tabel_user') ? 'active' : '' }}">
+                                            <p>Profil User</p>
+                                        </a>
+                                    </li>
                             @endif
                         </li>
                 </nav>
@@ -307,6 +312,7 @@
     <script src="{{ asset('lte/plugins/chart.js/Chart.bundle.js') }}"></script>
 
     <!-- Page specific script -->
+    @if ( Auth::user()->usertype == 'admin')
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -326,6 +332,50 @@
             });
         });
     </script>
+    @endif
+
+    @if ( Auth::user()->usertype == 'superpisor')
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+    @endif
+
+    @if ( Auth::user()->usertype == 'user')
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+    @endif
 
     <script>
         // Mencari elemen dropdown

@@ -42,7 +42,7 @@
                                 <td>{{ $post->job }}</td>
 
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');">
                                         <a href="{{ url('supervisor/show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
                                     </form>
                                 </td>

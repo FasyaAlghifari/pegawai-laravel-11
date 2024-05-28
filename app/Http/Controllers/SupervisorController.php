@@ -46,6 +46,7 @@ class SupervisorController extends Controller
     {
         //get post by ID
         $post = Post::findOrFail($id);
+        
         $maleCount = Post::where('jenis_kelamin', 'laki-laki')->count();
         $femaleCount = Post::where('jenis_kelamin', 'cewe')->count();
         //render view with post

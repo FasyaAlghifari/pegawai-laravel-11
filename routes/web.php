@@ -49,5 +49,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('dashboard', [UserController::class, 'index']);
 Route::get('pegawai', [UserController::class, 'pegawai']);
+Route::get('tabel_user', [UserController::class, 'user']);
 
 require __DIR__ . '/auth.php';

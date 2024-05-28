@@ -9,12 +9,13 @@ use App\Models\Post;
 use Illuminate\View\View;
 
 //return type redirectResponse
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 //import Facade "Storage"
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -43,6 +44,14 @@ class UserController extends Controller
         $maleCount = Post::where('jenis_kelamin', 'cowo')->count();
         $femaleCount = Post::where('jenis_kelamin', 'cewe')->count();
         return view('pegawai', compact('posts', 'maleCount', 'femaleCount'));
+    }
+
+    public function user(): View
+    {
+        $post = Auth::user();
+        $maleCount = Post::where('jenis_kelamin', 'cowo')->count();
+        $femaleCount = Post::where('jenis_kelamin', 'cewe')->count();
+        return view('tabel_user', compact('post', 'maleCount', 'femaleCount'));
     }
 }
 
